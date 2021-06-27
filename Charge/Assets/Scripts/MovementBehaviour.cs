@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class Joystick : MonoBehaviour
+public class MovementBehaviour : MonoBehaviour
 {
     // configuration parameters
+    [Range (1f, 7f)]
     [SerializeField] float movementSpeed;
     [SerializeField] Transform innerJoystickCircle;
     [SerializeField] Transform outerJoystickCircle;
