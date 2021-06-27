@@ -13,8 +13,8 @@ public class Joystick : MonoBehaviour
 
     // state variables
     private bool isTouchStarted;
-    private Vector2 pointA;
-    private Vector2 pointB;
+    private Vector2 joystickCenter;
+    private Vector2 joystickDirection;
 
     private void Awake()
     {
@@ -24,18 +24,20 @@ public class Joystick : MonoBehaviour
 
     private void Update()
     {
+        // mouse movement
         if (Input.GetMouseButtonDown(0))
         {
             // determine the center point of the joystick
-            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+            joystickCenter = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
             DrawJoystick();
-        }
 
+        }
         if (Input.GetMouseButton(0))
         {
             isTouchStarted = true;
-            pointB = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+            joystickDirection = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
         }
+
         else isTouchStarted = false;
 
         // touch movement
@@ -45,37 +47,34 @@ public class Joystick : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began)
             {
-                pointA = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
+                joystickCenter = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
                 DrawJoystick();
             }
 
             if (touch.phase == TouchPhase.Moved)
             {
                 isTouchStarted = true;
-                pointB = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
+                joystickDirection = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
             }
             else isTouchStarted = false;
         }
-    }
 
-    private void FixedUpdate()
-    {
         if (isTouchStarted)
         {
-            Vector2 offset = pointB - pointA;
+            Vector2 offset = joystickDirection - joystickCenter;
             Vector2 direction = Vector2.ClampMagnitude(offset, 1f);
 
             Move(direction);
 
-            innerJoystickCircle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y);
+            innerJoystickCircle.transform.position = new Vector2(joystickCenter.x + direction.x, joystickCenter.y + direction.y);
         }
         else
         {
             innerJoystickSprite.enabled = false;
             outerJoystickSprite.enabled = false;
         }
-    }
 
+    }
     private void Move(Vector2 direction)
     {
         transform.Translate(direction * movementSpeed * Time.deltaTime);
@@ -84,8 +83,8 @@ public class Joystick : MonoBehaviour
 
     private void DrawJoystick()
     {
-        innerJoystickCircle.transform.position = pointA;
-        outerJoystickCircle.transform.position = pointA;
+        innerJoystickCircle.transform.position = joystickCenter;
+        outerJoystickCircle.transform.position = joystickCenter;
         innerJoystickSprite.enabled = true;
         outerJoystickSprite.enabled = true;
     }
