@@ -73,8 +73,8 @@ public class Joystick : MonoBehaviour
             innerJoystickSprite.enabled = false;
             outerJoystickSprite.enabled = false;
         }
-
     }
+
     private void Move(Vector2 direction)
     {
         transform.Translate(direction * movementSpeed * Time.deltaTime);
