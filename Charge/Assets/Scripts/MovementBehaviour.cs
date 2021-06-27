@@ -88,4 +88,9 @@ public class MovementBehaviour : MonoBehaviour
         innerJoystickSprite.enabled = true;
         outerJoystickSprite.enabled = true;
     }
+
+    public bool IsPlayerMoving()
+    {
+        return isTouchStarted;
+    }
 }
