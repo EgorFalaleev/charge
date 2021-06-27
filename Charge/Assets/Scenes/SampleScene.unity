@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27e2fb3b9128454abb0d15bfabbfb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+  movementSpeed: 1.17
   innerJoystickCircle: {fileID: 842188332}
   outerJoystickCircle: {fileID: 624174750}
 --- !u!212 &104737389

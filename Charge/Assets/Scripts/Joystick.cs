@@ -78,7 +78,6 @@ public class Joystick : MonoBehaviour
     private void Move(Vector2 direction)
     {
         transform.Translate(direction * movementSpeed * Time.deltaTime);
-        transform.up = direction;
     }
 
     private void DrawJoystick()
