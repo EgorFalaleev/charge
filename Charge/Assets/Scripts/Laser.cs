@@ -7,6 +7,8 @@ public class Laser : MonoBehaviour
     [SerializeField] private float circleRadius = 1f;
 
     private SpriteRenderer circleSprite;
+    private GameObject enemy;
+    private Enemy enemyScript;
     private Vector3 enemyPos;
     private float distanceToEnemy;
 
@@ -15,7 +17,9 @@ public class Laser : MonoBehaviour
     {
         circleSprite = GetComponent<SpriteRenderer>();
         UpdateRadius(circleRadius);
-        enemyPos = GameObject.FindWithTag("Enemy").transform.position;
+        enemy = GameObject.FindWithTag("Enemy");
+        enemyPos = enemy.transform.position;
+        enemyScript = enemy.GetComponent<Enemy>();
 
         // at the beginning we suppose no enemy is inside the circle
         distanceToEnemy = circleRadius + 1f;
@@ -25,13 +29,17 @@ public class Laser : MonoBehaviour
     {
         distanceToEnemy = Vector2.Distance(transform.position, enemyPos);
 
-        if (distanceToEnemy <= circleRadius) circleSprite.color = Color.green;
+        if (distanceToEnemy <= circleRadius)
+        {
+            circleSprite.color = Color.green;
+            AttackEnemy(damage);
+        }
         else circleSprite.color = Color.red;
     }
 
     private void AttackEnemy(int damage)
     {
-        
+        enemyScript.GetDamage(damage);
     }
 
     public void UpdateRadius(float radius)
