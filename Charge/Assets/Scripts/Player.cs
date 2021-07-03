@@ -1,37 +1,25 @@
-using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // configuration parameters
-    [Range(3, 7)]
-    [SerializeField] private float laserRadius = 4.5f;
-    [SerializeField] private Transform laserCircle;
+    [SerializeField] private GameObject laserCircle;
 
-    // cached references
-    private MovementBehaviour joystick;
-
-    // state variables
-    private int health = 100;
+    private MovementBehaviour movementChecker;
+    
 
     private void Awake()
     {
-        laserCircle = GetComponentInChildren<Transform>();
-        joystick = GetComponent<MovementBehaviour>();
+        movementChecker = GetComponent<MovementBehaviour>();
     }
 
     private void Update()
     {
-        if (!joystick.IsPlayerMoving()) DrawLaserCircle(laserRadius);
+        EnableLaserCircle(movementChecker.IsPlayerMoving());
     }
 
-    private void DrawLaserCircle(float radius)
+    private void EnableLaserCircle(bool isPlayerMoving)
     {
-        laserCircle.localScale = new Vector2(radius, radius);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, laserRadius);
+        // laser circle enable when player is not moving
+        laserCircle.SetActive(!isPlayerMoving);
     }
 }
