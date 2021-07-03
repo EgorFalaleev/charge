@@ -218,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104737387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.012, y: -0.013, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1548928144}
@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 1548928144}
   - component: {fileID: 1548928145}
   - component: {fileID: 1548928146}
+  - component: {fileID: 1548928147}
   m_Layer: 0
   m_Name: Laser Radius Circle
   m_TagString: Untagged
@@ -616,6 +617,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.515
+--- !u!114 &1548928147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548928143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cafcf5517197d24eb1b95c59427cf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  circleRadius: 4
 --- !u!1 &2122501617
 GameObject:
   m_ObjectHideFlags: 0
