@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Range (1f, 4f)]
+    [SerializeField] private float circleRadius = 1f;
+
+    private SpriteRenderer circleSprite;
+
+    private void Awake()
     {
-        
+        circleSprite = GetComponent<SpriteRenderer>();
+        UpdateRadius(circleRadius);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateRadius(float radius)
     {
-        
+        transform.localScale = new Vector2(circleRadius, circleRadius);
     }
 }
