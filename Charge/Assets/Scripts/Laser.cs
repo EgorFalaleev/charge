@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
+    [SerializeField] private float damage = 1f;
     [Range (1f, 4f)]
     [SerializeField] private float circleRadius = 1f;
 
@@ -38,7 +38,7 @@ public class Laser : MonoBehaviour
         if (distanceToEnemy <= circleRadius && enemy)
         {
             circleSprite.color = Color.green;
-            AttackEnemy(damage);
+            AttackEnemy(damage * Time.deltaTime);
         }
         else
         {
@@ -47,7 +47,7 @@ public class Laser : MonoBehaviour
         }
     }
 
-    private void AttackEnemy(int damage)
+    private void AttackEnemy(float damage)
     {
         // create a laser from player to enemy
         laserBeam.positionCount = 2;
