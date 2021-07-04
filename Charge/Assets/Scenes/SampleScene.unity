@@ -631,6 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   circleRadius: 4
+  enemy: {fileID: 2122501618}
 --- !u!1 &2122501617
 GameObject:
   m_ObjectHideFlags: 0

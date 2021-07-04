@@ -9,17 +9,25 @@ public class Laser : MonoBehaviour
     public Enemy enemy;
 
     private SpriteRenderer circleSprite;
+    private LineRenderer laserBeam;
     private Vector3 enemyPos;
     private float distanceToEnemy;
 
     private void Awake()
     {
         circleSprite = GetComponent<SpriteRenderer>();
-        UpdateRadius(circleRadius);
+        laserBeam = GetComponent<LineRenderer>();
+    }
+
+    private void Start()
+    {
         enemyPos = enemy.transform.position;
+        laserBeam.startWidth = 0.1f;
 
         // at the beginning we suppose no enemy is inside the circle
         distanceToEnemy = circleRadius + 1f;
+
+        UpdateRadius(circleRadius);
     }
 
     private void Update()
@@ -32,16 +40,25 @@ public class Laser : MonoBehaviour
             circleSprite.color = Color.green;
             AttackEnemy(damage);
         }
-        else circleSprite.color = Color.red;
+        else
+        {
+            circleSprite.color = Color.red;
+            laserBeam.positionCount = 0;
+        }
     }
 
     private void AttackEnemy(int damage)
     {
+        // create a laser from player to enemy
+        laserBeam.positionCount = 2;
+        laserBeam.SetPosition(0, transform.position);
+        laserBeam.SetPosition(1, enemyPos);
+
         enemy.GetDamage(damage);
     }
 
     public void UpdateRadius(float radius)
     {
-        transform.localScale = new Vector2(circleRadius / 1.5f, circleRadius / 1.5f);
+        transform.localScale = new Vector2(radius / 1.5f, radius / 1.5f);
     }
 }
