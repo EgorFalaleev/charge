@@ -25,7 +25,6 @@ public class MovementBehaviour : MonoBehaviour
 
     private void Update()
     {
-        // mouse movement
         if (Input.GetMouseButtonDown(0))
         {
             // determine the center point of the joystick
@@ -40,25 +39,6 @@ public class MovementBehaviour : MonoBehaviour
         }
 
         else isTouchStarted = false;
-
-        // touch movement
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                joystickCenter = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
-                DrawJoystick();
-            }
-
-            if (touch.phase == TouchPhase.Moved)
-            {
-                isTouchStarted = true;
-                joystickDirection = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
-            }
-            else isTouchStarted = false;
-        }
 
         if (isTouchStarted)
         {
