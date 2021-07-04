@@ -14,12 +14,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        EnableLaserCircle(movementChecker.IsPlayerMoving());
+        HandleLaserCircleVisibility(movementChecker.IsPlayerMoving());
     }
 
-    private void EnableLaserCircle(bool isPlayerMoving)
+    private void HandleLaserCircleVisibility(bool isPlayerMoving)
     {
-        // laser circle enable when player is not moving
+        // laser circle enables when player is not moving
         laserCircle.SetActive(!isPlayerMoving);
     }
 }
