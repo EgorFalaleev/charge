@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeLevel: 0.5
-  chargeChangeSpeed: 0.0005
+  chargeChangeSpeed: 0.1
   laserCircle: {fileID: 1548928143}
   isAttacking: 0
 --- !u!1 &519420028
@@ -766,6 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd561842792f894b856f836aa9c1bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
 --- !u!212 &2122501619
 SpriteRenderer:
   m_ObjectHideFlags: 0

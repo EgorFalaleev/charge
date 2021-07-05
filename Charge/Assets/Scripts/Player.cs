@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         bool isPlayerMoving = movementChecker.IsPlayerMoving();
 
         HandleLaserCircleVisibility(isPlayerMoving);
-        ChangeChargeLevel(isPlayerMoving, chargeChangeSpeed);
+        ChangeChargeLevel(isPlayerMoving, chargeChangeSpeed * Time.deltaTime);
     }
 
     private void HandleLaserCircleVisibility(bool isPlayerMoving)
