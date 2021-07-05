@@ -39,8 +39,11 @@ public class Laser : MonoBehaviour
         if (distanceToEnemy <= circleRadius && enemy)
         {
             player.isAttacking = true;
+            float charge = player.GetChargeLevel();
+
             circleSprite.color = Color.green;
-            AttackEnemy(damage * Time.deltaTime);
+
+            AttackEnemy(damage * Time.deltaTime, charge);
         }
         else
         {
@@ -50,14 +53,18 @@ public class Laser : MonoBehaviour
         }
     }
 
-    private void AttackEnemy(float damage)
+    private void AttackEnemy(float damage, float chargeLevel)
     {
-        // create a laser from player to enemy
-        laserBeam.positionCount = 2;
-        laserBeam.SetPosition(0, transform.position);
-        laserBeam.SetPosition(1, enemyPos);
+        if (chargeLevel > 0f)
+        {
+            // create a laser from player to enemy
+            laserBeam.positionCount = 2;
+            laserBeam.SetPosition(0, transform.position);
+            laserBeam.SetPosition(1, enemyPos);
 
-        enemy.GetDamage(damage);
+            enemy.GetDamage(damage);
+        }
+        else laserBeam.positionCount = 0;
     }
 
     public void UpdateRadius(float radius)

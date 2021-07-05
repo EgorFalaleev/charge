@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
         ChangeChargeLevel(isPlayerMoving, chargeChangeSpeed * Time.deltaTime);
     }
 
+    public float GetChargeLevel()
+    {
+        return chargeLevel;
+    }
+
     private void HandleLaserCircleVisibility(bool isPlayerMoving)
     {
         // laser circle enables when player is not moving
