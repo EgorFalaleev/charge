@@ -7,6 +7,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private float circleRadius = 1f;
 
     public Enemy enemy;
+    public Player player;
 
     private SpriteRenderer circleSprite;
     private LineRenderer laserBeam;
@@ -37,24 +38,33 @@ public class Laser : MonoBehaviour
         // attack only if enemy exists
         if (distanceToEnemy <= circleRadius && enemy)
         {
+            player.isAttacking = true;
+            float charge = player.GetChargeLevel();
+
             circleSprite.color = Color.green;
-            AttackEnemy(damage * Time.deltaTime);
+
+            AttackEnemy(damage * Time.deltaTime, charge);
         }
         else
         {
+            player.isAttacking = false;
             circleSprite.color = Color.red;
             laserBeam.positionCount = 0;
         }
     }
 
-    private void AttackEnemy(float damage)
+    private void AttackEnemy(float damage, float chargeLevel)
     {
-        // create a laser from player to enemy
-        laserBeam.positionCount = 2;
-        laserBeam.SetPosition(0, transform.position);
-        laserBeam.SetPosition(1, enemyPos);
+        if (chargeLevel > 0f)
+        {
+            // create a laser from player to enemy
+            laserBeam.positionCount = 2;
+            laserBeam.SetPosition(0, transform.position);
+            laserBeam.SetPosition(1, enemyPos);
 
-        enemy.GetDamage(damage);
+            enemy.GetDamage(damage);
+        }
+        else laserBeam.positionCount = 0;
     }
 
     public void UpdateRadius(float radius)
