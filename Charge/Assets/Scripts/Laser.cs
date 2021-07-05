@@ -7,6 +7,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private float circleRadius = 1f;
 
     public Enemy enemy;
+    public Player player;
 
     private SpriteRenderer circleSprite;
     private LineRenderer laserBeam;
@@ -37,11 +38,13 @@ public class Laser : MonoBehaviour
         // attack only if enemy exists
         if (distanceToEnemy <= circleRadius && enemy)
         {
+            player.isAttacking = true;
             circleSprite.color = Color.green;
             AttackEnemy(damage * Time.deltaTime);
         }
         else
         {
+            player.isAttacking = false;
             circleSprite.color = Color.red;
             laserBeam.positionCount = 0;
         }

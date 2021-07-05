@@ -237,7 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d34301c729bb9458446808a9c91cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeLevel: 0.5
+  chargeChangeSpeed: 0.0005
   laserCircle: {fileID: 1548928143}
+  isAttacking: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +636,7 @@ MonoBehaviour:
   damage: 10
   circleRadius: 4
   enemy: {fileID: 2122501618}
+  player: {fileID: 104737391}
 --- !u!120 &1548928148
 LineRenderer:
   m_ObjectHideFlags: 0
