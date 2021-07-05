@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float chargeLevel = 0.5f;
     [SerializeField] private float chargeChangeSpeed = 0.01f;
     [SerializeField] private GameObject laserCircle;
+    [SerializeField] private Text chargeLevelText;
 
     public bool isAttacking;
 
@@ -14,6 +16,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         movementChecker = GetComponent<MovementBehaviour>();
+    }
+
+    private void Start()
+    {
+        chargeLevelText.text = "Charge level " + chargeLevel;
     }
 
     private void Update()
@@ -48,5 +55,7 @@ public class Player : MonoBehaviour
             chargeLevel -= chargeSpeed;
             if (chargeLevel <= 0f) chargeLevel = 0f;
         }
+
+        chargeLevelText.text = "Charge Level " + chargeLevel;
     }
 }
