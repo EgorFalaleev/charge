@@ -902,6 +902,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7399579231915426903, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
+      propertyPath: movementSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579231915426903, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
       propertyPath: innerJoystickCircle
       value: 
       objectReference: {fileID: 842188332}
