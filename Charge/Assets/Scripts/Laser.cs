@@ -22,7 +22,6 @@ public class Laser : MonoBehaviour
 
     private void Start()
     {
-        enemyPos = enemy.transform.position;
         laserBeam.startWidth = 0.1f;
 
         // at the beginning we suppose no enemy is inside the circle
@@ -33,10 +32,14 @@ public class Laser : MonoBehaviour
 
     private void Update()
     {
-        distanceToEnemy = Vector2.Distance(transform.position, enemyPos);
+        if (enemy)
+        {
+            enemyPos = enemy.transform.position;
+            distanceToEnemy = Vector2.SqrMagnitude(enemyPos - transform.position);
+        }
 
         // attack only if enemy exists
-        if (distanceToEnemy <= circleRadius && enemy)
+        if (distanceToEnemy <= circleRadius * circleRadius && enemy)
         {
             player.isAttacking = true;
             float charge = player.GetChargeLevel();
