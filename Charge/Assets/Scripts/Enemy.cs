@@ -6,10 +6,12 @@ public class Enemy : MonoBehaviour
     // configuration parameters
     [Range(1f, 7f)]
     [SerializeField] private float spotRadius = 3f;
+    [Range(0f, 10f)]
     [SerializeField] private float enemySpeed = 3f;
+    [SerializeField] private float damageWhenDestroyed = 40f;
 
     // references
-    [SerializeField] private Transform playerTf;
+    [SerializeField] private Player player;
 
     // state variables
     private float health = 100;
@@ -17,7 +19,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector2 directionToPlayer = playerTf.position - transform.position;
+        Vector2 directionToPlayer = player.transform.position - transform.position;
 
         Gizmos.color = (directionToPlayer.sqrMagnitude <= spotRadius * spotRadius) ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position, spotRadius);
@@ -30,12 +32,19 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Vector2 directionToPlayer = playerTf.position - transform.position;
+        Vector2 directionToPlayer = player.transform.position - transform.position;
 
         if (directionToPlayer.sqrMagnitude <= spotRadius * spotRadius)
         {
             FollowPlayer(directionToPlayer);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        player.GetDamage(damageWhenDestroyed);
+
+        Destroy(gameObject);
     }
 
     private void FollowPlayer(Vector2 direction)
