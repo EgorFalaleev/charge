@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -330,6 +331,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95270bcc2864ee42895a6c3548d961f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTime: 100
+  cameraOffset: {x: 0, y: 0, z: -10}
+  targetTf: {fileID: 1585937520}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -636,6 +652,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375918547}
   m_CullTransparentMesh: 1
+--- !u!4 &1585937520 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7399579231915426901, guid: fa84e7cb34249bb4b92f436c37c585f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7399579231880179259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2122501618 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7237796898789621724, guid: 3762095068cf6f24a8f6a9800ed98499,
@@ -877,6 +899,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579231915426903, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7399579231915426903, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}

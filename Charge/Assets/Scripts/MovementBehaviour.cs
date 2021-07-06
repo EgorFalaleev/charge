@@ -16,8 +16,6 @@ public class MovementBehaviour : MonoBehaviour
     private bool isTouchStarted;
     private Vector2 joystickCenter;
     private Vector2 joystickDirection;
-    private Vector2 screenBounds;
-    private Vector2 playerBounds;
 
     private void Awake()
     {
@@ -25,19 +23,8 @@ public class MovementBehaviour : MonoBehaviour
         outerJoystickSprite = outerJoystickCircle.GetComponent<SpriteRenderer>();
     }
 
-    private void Start()
-    {
-        // screen bounds in world space
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
-        playerBounds = new Vector2(GetComponent<SpriteRenderer>().bounds.extents.x, GetComponent<SpriteRenderer>().bounds.extents.y);
-    }
-
     private void Update()
     {
-        // keep player inside the screen
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBounds.x + playerBounds.x, screenBounds.x - playerBounds.x), Mathf.Clamp(transform.position.y, -screenBounds.y + playerBounds.y, screenBounds.y - playerBounds.y));
-
         if (Input.GetMouseButtonDown(0))
         {
             // determine the center point of the joystick
