@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7399579230742358699}
   - component: {fileID: 7399579230742358698}
-  - component: {fileID: 7399579230742358697}
   - component: {fileID: 7399579230742358696}
   - component: {fileID: 7399579230742358703}
   m_Layer: 0
@@ -85,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7399579230742358697
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7399579230742358708}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.515
 --- !u!114 &7399579230742358696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +210,7 @@ GameObject:
   - component: {fileID: 7399579231915426902}
   - component: {fileID: 7399579231915426903}
   - component: {fileID: 7399579231915426900}
+  - component: {fileID: 6419452753931830213}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -331,4 +315,21 @@ MonoBehaviour:
   chargeLevel: 0.5
   chargeChangeSpeed: 0.1
   laserCircle: {fileID: 7399579230742358708}
+  chargeLevelText: {fileID: 0}
   isAttacking: 0
+--- !u!58 &6419452753931830213
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7399579231915426896}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
