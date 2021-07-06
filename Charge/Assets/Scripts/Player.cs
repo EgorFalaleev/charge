@@ -3,16 +3,21 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [Range(0f, 1f)]
-    [SerializeField] private float chargeLevel = 0.5f;
+    // configuration parameters
     [SerializeField] private float chargeChangeSpeed = 0.01f;
+
+    // references
+    private MovementBehaviour movementChecker;
     [SerializeField] private GameObject laserCircle;
     [SerializeField] private Text chargeLevelText;
+    [SerializeField] private Text playerHPText;
 
+    // state variables
     public bool isAttacking;
+    private float health = 100f;
+    [Range(0f, 1f)]
+    [SerializeField] private float chargeLevel = 0.5f;
 
-    private MovementBehaviour movementChecker;
-    
     private void Awake()
     {
         movementChecker = GetComponent<MovementBehaviour>();
@@ -20,7 +25,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        chargeLevelText.text = "Charge level " + chargeLevel;
+        chargeLevelText.text = "Charge level: " + chargeLevel;
+        playerHPText.text = "Player HP: " + health;
     }
 
     private void Update()
@@ -34,6 +40,13 @@ public class Player : MonoBehaviour
     public float GetChargeLevel()
     {
         return chargeLevel;
+    }
+
+    public void GetDamage(float damage)
+    {
+        health -= damage;
+        playerHPText.text = "Player HP: " + health;
+        if (health <= 0) Destroy(gameObject);
     }
 
     private void HandleLaserCircleVisibility(bool isPlayerMoving)
@@ -56,6 +69,6 @@ public class Player : MonoBehaviour
             if (chargeLevel <= 0f) chargeLevel = 0f;
         }
 
-        chargeLevelText.text = "Charge Level " + chargeLevel;
+        chargeLevelText.text = "Charge Level: " + chargeLevel;
     }
 }
