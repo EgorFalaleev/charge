@@ -27,14 +27,14 @@ public class MovementBehaviour : MonoBehaviour
 
     private void Start()
     {
-        // screen bounds in world space
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
         playerBounds = new Vector2(GetComponent<SpriteRenderer>().bounds.extents.x, GetComponent<SpriteRenderer>().bounds.extents.y);
     }
 
     private void Update()
     {
+        // screen bounds in world space
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
         // keep player inside the screen
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBounds.x + playerBounds.x, screenBounds.x - playerBounds.x), Mathf.Clamp(transform.position.y, -screenBounds.y + playerBounds.y, screenBounds.y - playerBounds.y));
 
