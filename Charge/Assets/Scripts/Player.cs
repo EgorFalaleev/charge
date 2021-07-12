@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     // references
     [SerializeField] private DynamicJoystick joystick;
     [SerializeField] private GameObject laserCircle;
-    [SerializeField] private Text chargeLevelText;
+    [SerializeField] private Slider chargeLevelSlider;
     [SerializeField] private Text playerHPText;
 
     // state variables
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        chargeLevelText.text = "Charge level: " + chargeLevel;
+        chargeLevelSlider.value = chargeLevel;
         playerHPText.text = "Player HP: " + health;
     }
 
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
             if (chargeLevel <= 0f) chargeLevel = 0f;
         }
 
-        chargeLevelText.text = "Charge Level: " + chargeLevel;
+        chargeLevelSlider.value = chargeLevel;
     }
 
     private void Move()
