@@ -71,7 +71,12 @@ public class Player : MonoBehaviour
     private void Move()
     {
         Vector3 direction = Vector3.right * joystick.Horizontal + Vector3.up * joystick.Vertical;
-        
-        transform.Translate(direction * movementSpeed * Time.deltaTime);
+
+        if (direction == Vector3.zero) isPlayerMoving = false;
+        else
+        {
+            isPlayerMoving = true;
+            transform.Translate(direction * movementSpeed * Time.deltaTime);
+        }
     }
 }
