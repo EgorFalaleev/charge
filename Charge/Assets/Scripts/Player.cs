@@ -5,23 +5,20 @@ public class Player : MonoBehaviour
 {
     // configuration parameters
     [SerializeField] private float chargeChangeSpeed = 0.01f;
+    [SerializeField] private float movementSpeed = 1f;
 
     // references
-    private MovementBehaviour movementChecker;
+    [SerializeField] private DynamicJoystick joystick;
     [SerializeField] private GameObject laserCircle;
     [SerializeField] private Text chargeLevelText;
     [SerializeField] private Text playerHPText;
 
     // state variables
     public bool isAttacking;
+    private bool isPlayerMoving = false;
     private float health = 100f;
     [Range(0f, 1f)]
     [SerializeField] private float chargeLevel = 0.5f;
-
-    private void Awake()
-    {
-        movementChecker = GetComponent<MovementBehaviour>();
-    }
 
     private void Start()
     {
@@ -31,8 +28,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        bool isPlayerMoving = movementChecker.IsPlayerMoving();
-
+        Move();
         HandleLaserCircleVisibility(isPlayerMoving);
         ChangeChargeLevel(isPlayerMoving, chargeChangeSpeed * Time.deltaTime);
     }
@@ -70,5 +66,17 @@ public class Player : MonoBehaviour
         }
 
         chargeLevelText.text = "Charge Level: " + chargeLevel;
+    }
+
+    private void Move()
+    {
+        Vector3 direction = Vector3.right * joystick.Horizontal + Vector3.up * joystick.Vertical;
+
+        if (direction == Vector3.zero) isPlayerMoving = false;
+        else
+        {
+            isPlayerMoving = true;
+            transform.Translate(direction * movementSpeed * Time.deltaTime);
+        }
     }
 }
