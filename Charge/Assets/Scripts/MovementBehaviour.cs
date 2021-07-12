@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class MovementBehaviour : MonoBehaviour
 {
+    /// <summary>
+    /// i need to translate joystick in the direction it determines
+    /// </summary>
+
     // configuration parameters
     [Range (1f, 7f)]
     [SerializeField] float movementSpeed;
@@ -46,7 +50,6 @@ public class MovementBehaviour : MonoBehaviour
             Vector2 direction = Vector2.ClampMagnitude(offset, 1f);
 
             Move(direction);
-
             innerJoystickCircle.transform.position = new Vector2(joystickCenter.x + direction.x, joystickCenter.y + direction.y);
         }
         else
