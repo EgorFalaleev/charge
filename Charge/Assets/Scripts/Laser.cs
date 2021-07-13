@@ -48,14 +48,11 @@ public class Laser : MonoBehaviour
             player.isAttacking = true;
             float charge = player.GetChargeLevel();
 
-            circleSprite.color = Color.green;
-
             AttackEnemy(damage * Time.deltaTime, charge);
         }
         else
         {
             player.isAttacking = false;
-            circleSprite.color = Color.red;
             laserBeam.positionCount = 0;
         }
     }
