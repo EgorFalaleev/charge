@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    // configuration parameters
     [SerializeField] private float damage = 1f;
     [Range (1f, 4f)]
     [SerializeField] private float circleRadius = 1f;
 
+    // references
     public Enemy enemy;
     public Player player;
-
     private SpriteRenderer circleSprite;
     private LineRenderer laserBeam;
+    [SerializeField] private RectTransform laserChargeCircle;
+    
+    // state variables
     private Vector3 enemyPos;
     private float distanceToEnemy;
 
@@ -44,14 +48,11 @@ public class Laser : MonoBehaviour
             player.isAttacking = true;
             float charge = player.GetChargeLevel();
 
-            circleSprite.color = Color.green;
-
             AttackEnemy(damage * Time.deltaTime, charge);
         }
         else
         {
             player.isAttacking = false;
-            circleSprite.color = Color.red;
             laserBeam.positionCount = 0;
         }
     }
@@ -73,5 +74,6 @@ public class Laser : MonoBehaviour
     public void UpdateRadius(float radius)
     {
         transform.localScale = new Vector2(radius / 1.5f, radius / 1.5f);
+        laserChargeCircle.sizeDelta = new Vector2(323.5f * radius, 323.5f * radius);
     }
 }

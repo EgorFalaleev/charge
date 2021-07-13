@@ -100,6 +100,7 @@ MonoBehaviour:
   circleRadius: 4
   enemy: {fileID: 0}
   player: {fileID: 7399579231915426900}
+  laserChargeCircle: {fileID: 0}
 --- !u!120 &7399579230742358703
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -303,6 +304,8 @@ MonoBehaviour:
   laserCircle: {fileID: 7399579230742358708}
   chargeLevelSlider: {fileID: 0}
   playerHPText: {fileID: 0}
+  playerChargeCircle: {fileID: 0}
+  playerLaserChargeCircle: {fileID: 0}
   isAttacking: 0
   chargeLevel: 0.5
 --- !u!58 &6419452753931830213
