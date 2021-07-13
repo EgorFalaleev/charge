@@ -12,9 +12,11 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject laserCircle;
     [SerializeField] private Slider chargeLevelSlider;
     [SerializeField] private Text playerHPText;
-    [SerializeField] private GameObject playerChargeCircle; 
+    [SerializeField] private GameObject playerChargeCircle;
+    [SerializeField] private GameObject playerLaserChargeCircle;
     private Camera mainCamera;
     private Image playerChargeImage;
+    private Image playerLaserChargeImage;
 
     // state variables
     public bool isAttacking;
@@ -27,12 +29,14 @@ public class Player : MonoBehaviour
     {
         mainCamera = Camera.main;
         playerChargeImage = playerChargeCircle.GetComponent<Image>();
+        playerLaserChargeImage = playerLaserChargeCircle.GetComponent<Image>();
     }
 
     private void Start()
     {
         chargeLevelSlider.value = chargeLevel;
         playerChargeImage.fillAmount = chargeLevel;
+
         playerHPText.text = "Player HP: " + health;
     }
 
@@ -40,6 +44,7 @@ public class Player : MonoBehaviour
     {
         // place the player charge circle on the player object
         playerChargeCircle.transform.position = mainCamera.WorldToScreenPoint(transform.position);
+        playerLaserChargeCircle.transform.position = mainCamera.WorldToScreenPoint(transform.position);
 
         Move();
         HandleLaserCircleVisibility(isPlayerMoving);
@@ -62,6 +67,7 @@ public class Player : MonoBehaviour
     {
         // laser circle enables when player is not moving
         laserCircle.SetActive(!isPlayerMoving);
+        playerLaserChargeCircle.SetActive(!isPlayerMoving);
     }
 
     private void ChangeChargeLevel(bool isMoving, float chargeSpeed)
@@ -80,6 +86,7 @@ public class Player : MonoBehaviour
 
         chargeLevelSlider.value = chargeLevel;
         playerChargeImage.fillAmount = chargeLevel;
+        playerLaserChargeImage.fillAmount = chargeLevel;
     }
 
     private void Move()
