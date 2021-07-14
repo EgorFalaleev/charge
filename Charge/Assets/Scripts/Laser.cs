@@ -37,20 +37,30 @@ public class Laser : MonoBehaviour
     private void Update()
     {
         FindClosestEnemy(enemies);
+
+        // attack enemy if it is inside the laser circle
+        if (enemyToAttack && Vector2.SqrMagnitude(transform.position - enemyToAttack.transform.position) <= circleRadius * circleRadius)
+        {
+            player.isAttacking = true;
+            AttackEnemy(damage, player.GetChargeLevel());
+        }
+        else
+        {
+            player.isAttacking = false;
+            laserBeam.positionCount = 0;
+        }
     }
 
-    private void AttackEnemy(float damage, float chargeLevel, int enemyNumber)
+    private void AttackEnemy(float damage, float chargeLevel)
     {
-        Debug.Log("Enemy " + enemyNumber);
-
         if (chargeLevel > 0f)
         {
             // create a laser from player to enemy
             laserBeam.positionCount = 2;
             laserBeam.SetPosition(0, transform.position);
-            laserBeam.SetPosition(1, enemies[enemyNumber].transform.position);
+            laserBeam.SetPosition(1, enemyToAttack.transform.position);
 
-            enemies[enemyNumber].GetDamage(damage);
+            enemyToAttack.GetDamage(damage * Time.deltaTime);
         }
         else laserBeam.positionCount = 0;
     }
@@ -77,7 +87,7 @@ public class Laser : MonoBehaviour
             }
         }
 
-        enemyToAttack.GetComponent<SpriteRenderer>().color = Color.green;
+        if (enemyToAttack) enemyToAttack.GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     public void UpdateRadius(float radius)
