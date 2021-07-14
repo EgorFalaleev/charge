@@ -65,12 +65,15 @@ public class Laser : MonoBehaviour
 
         for (int i = 0; i < activeEnemies.Count; i++)
         {
-            distanceToEnemySqr = Vector2.SqrMagnitude(transform.position - activeEnemies[i].transform.position);
-
-            if (distanceToEnemySqr < minDistanceToEnemySqr)
+            if (activeEnemies[i])
             {
-                minDistanceToEnemySqr = distanceToEnemySqr;
-                enemyToAttack = activeEnemies[i];
+                distanceToEnemySqr = Vector2.SqrMagnitude(transform.position - activeEnemies[i].transform.position);
+
+                if (distanceToEnemySqr < minDistanceToEnemySqr)
+                {
+                    minDistanceToEnemySqr = distanceToEnemySqr;
+                    enemyToAttack = activeEnemies[i];
+                }
             }
         }
 
