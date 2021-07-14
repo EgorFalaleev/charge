@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void AddEnemy()
     {
-        Enemy newEnemy = Instantiate(enemyPrefab, GenerateRandomPosition(player.transform.position), Quaternion.identity);
+        Enemy newEnemy = Instantiate(enemyPrefab, GenerateRandomPosition(player.transform.position), transform.rotation);
+        newEnemy.transform.parent = transform;
         FindObjectOfType<Laser>().AddEnemy(newEnemy);
     }
 
