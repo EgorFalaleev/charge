@@ -52,6 +52,10 @@ public class Enemy : MonoBehaviour
 
         if (health <= 50) GetComponent<SpriteRenderer>().color = Color.yellow;
 
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0)
+        {
+            FindObjectOfType<Laser>().RemoveEnemy(this);
+            Destroy(gameObject);
+        }
     }
 }

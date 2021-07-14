@@ -90,6 +90,11 @@ public class Laser : MonoBehaviour
         if (enemyToAttack) enemyToAttack.GetComponent<SpriteRenderer>().color = Color.green;
     }
 
+    public void RemoveEnemy(Enemy enemyToRemove)
+    {
+        enemies.Remove(enemyToRemove);
+    }
+
     public void UpdateRadius(float radius)
     {
         transform.localScale = new Vector2(radius / 1.5f, radius / 1.5f);
