@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
 
     // state variables
     private float health = 100;
-    [SerializeField] private Text healthText;
 
     private void OnDrawGizmos()
     {
@@ -23,11 +22,6 @@ public class Enemy : MonoBehaviour
 
         Gizmos.color = (directionToPlayer.sqrMagnitude <= spotRadius * spotRadius) ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position, spotRadius);
-    }
-
-    private void Start()
-    {
-        healthText.text = "Enemy Health " + health;
     }
 
     private void Update()
@@ -56,7 +50,7 @@ public class Enemy : MonoBehaviour
     {
         health -= damagePoints;
 
-        healthText.text = "Enemy Health " + health;
+        if (health <= 50) GetComponent<SpriteRenderer>().color = Color.yellow;
 
         if (health <= 0) Destroy(gameObject);
     }
