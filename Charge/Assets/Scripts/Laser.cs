@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
@@ -8,67 +10,71 @@ public class Laser : MonoBehaviour
     [SerializeField] private float circleRadius = 1f;
 
     // references
-    public Enemy enemy;
+    public List<Enemy> enemies;
     public Player player;
-    private SpriteRenderer circleSprite;
     private LineRenderer laserBeam;
+    [SerializeField] private Enemy enemyToAttack;
     [SerializeField] private RectTransform laserChargeCircle;
-    
+
     // state variables
-    private Vector3 enemyPos;
-    private float distanceToEnemy;
+    private float distanceToEnemySqr;
 
     private void Awake()
     {
-        circleSprite = GetComponent<SpriteRenderer>();
         laserBeam = GetComponent<LineRenderer>();
     }
-
+    
     private void Start()
     {
         laserBeam.startWidth = 0.1f;
 
         // at the beginning we suppose no enemy is inside the circle
-        distanceToEnemy = circleRadius + 1f;
+        distanceToEnemySqr = Mathf.Infinity;
 
         UpdateRadius(circleRadius);
     }
 
     private void Update()
     {
-        if (enemy)
-        {
-            enemyPos = enemy.transform.position;
-            distanceToEnemy = Vector2.SqrMagnitude(enemyPos - transform.position);
-        }
-
-        // attack only if enemy exists
-        if (distanceToEnemy <= circleRadius * circleRadius && enemy)
-        {
-            player.isAttacking = true;
-            float charge = player.GetChargeLevel();
-
-            AttackEnemy(damage * Time.deltaTime, charge);
-        }
-        else
-        {
-            player.isAttacking = false;
-            laserBeam.positionCount = 0;
-        }
+        FindClosestEnemy(enemies);
     }
 
-    private void AttackEnemy(float damage, float chargeLevel)
+    private void AttackEnemy(float damage, float chargeLevel, int enemyNumber)
     {
+        Debug.Log("Enemy " + enemyNumber);
+
         if (chargeLevel > 0f)
         {
             // create a laser from player to enemy
             laserBeam.positionCount = 2;
             laserBeam.SetPosition(0, transform.position);
-            laserBeam.SetPosition(1, enemyPos);
+            laserBeam.SetPosition(1, enemies[enemyNumber].transform.position);
 
-            enemy.GetDamage(damage);
+            enemies[enemyNumber].GetDamage(damage);
         }
         else laserBeam.positionCount = 0;
+    }
+
+    private void FindClosestEnemy(List<Enemy> activeEnemies)
+    {
+        float minDistanceToEnemySqr = Mathf.Infinity;
+
+        if (enemyToAttack) enemyToAttack.GetComponent<SpriteRenderer>().color = Color.red;
+
+        enemyToAttack = null;
+
+        for (int i = 0; i < activeEnemies.Count; i++)
+        {
+            distanceToEnemySqr = Vector2.SqrMagnitude(transform.position - activeEnemies[i].transform.position);
+
+            if (distanceToEnemySqr < minDistanceToEnemySqr)
+            {
+                minDistanceToEnemySqr = distanceToEnemySqr;
+                enemyToAttack = activeEnemies[i];
+            }
+        }
+
+        enemyToAttack.GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     public void UpdateRadius(float radius)

@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Player player;
 
     // state variables
-    private float health = 100;
+    [SerializeField] private float health = 100;
 
     private void OnDrawGizmos()
     {
