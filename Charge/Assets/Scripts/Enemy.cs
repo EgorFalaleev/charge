@@ -46,7 +46,6 @@ public class Enemy : MonoBehaviour
 
     private void FollowPlayer(Vector2 direction)
     {
-        Debug.Log(this + " Follow player");
         transform.Translate(direction.normalized * enemySpeed * Time.deltaTime);
     }
 

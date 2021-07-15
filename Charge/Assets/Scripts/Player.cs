@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private Camera mainCamera;
     private Image playerChargeImage;
     private Image playerLaserChargeImage;
+    private SceneLoader sceneLoader;
 
     // state variables
     public bool isAttacking;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
+        sceneLoader = FindObjectOfType<SceneLoader>();
         playerChargeImage = playerChargeCircle.GetComponent<Image>();
         playerLaserChargeImage = playerLaserChargeCircle.GetComponent<Image>();
     }
@@ -60,7 +62,10 @@ public class Player : MonoBehaviour
     {
         health -= damage;
         playerHPText.text = "Player HP: " + health;
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0)
+        {
+            sceneLoader.RestartLevel();
+        }
     }
 
     private void HandleLaserCircleVisibility(bool isPlayerMoving)
