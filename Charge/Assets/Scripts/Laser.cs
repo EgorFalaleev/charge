@@ -95,11 +95,6 @@ public class Laser : MonoBehaviour
         enemies.Remove(enemyToRemove);
     }
 
-    public void AddEnemy(Enemy enemyToAdd)
-    {
-        enemies.Add(enemyToAdd);
-    }
-
     public void UpdateRadius(float radius)
     {
         transform.localScale = new Vector2(radius / 1.5f, radius / 1.5f);
