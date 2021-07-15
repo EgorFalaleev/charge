@@ -96,10 +96,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cafcf5517197d24eb1b95c59427cf5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 50
   circleRadius: 4
-  enemy: {fileID: 0}
+  enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   player: {fileID: 7399579231915426900}
+  enemyToAttack: {fileID: 0}
   laserChargeCircle: {fileID: 0}
 --- !u!120 &7399579230742358703
 LineRenderer:
@@ -214,7 +225,7 @@ GameObject:
   - component: {fileID: 199566780}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

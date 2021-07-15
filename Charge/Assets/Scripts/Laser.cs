@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Laser : MonoBehaviour
@@ -8,47 +10,39 @@ public class Laser : MonoBehaviour
     [SerializeField] private float circleRadius = 1f;
 
     // references
-    public Enemy enemy;
+    public List<Enemy> enemies;
     public Player player;
-    private SpriteRenderer circleSprite;
     private LineRenderer laserBeam;
+    [SerializeField] private Enemy enemyToAttack;
     [SerializeField] private RectTransform laserChargeCircle;
-    
+
     // state variables
-    private Vector3 enemyPos;
-    private float distanceToEnemy;
+    private float distanceToEnemySqr;
 
     private void Awake()
     {
-        circleSprite = GetComponent<SpriteRenderer>();
         laserBeam = GetComponent<LineRenderer>();
     }
-
+    
     private void Start()
     {
         laserBeam.startWidth = 0.1f;
 
         // at the beginning we suppose no enemy is inside the circle
-        distanceToEnemy = circleRadius + 1f;
+        distanceToEnemySqr = Mathf.Infinity;
 
         UpdateRadius(circleRadius);
     }
 
     private void Update()
     {
-        if (enemy)
-        {
-            enemyPos = enemy.transform.position;
-            distanceToEnemy = Vector2.SqrMagnitude(enemyPos - transform.position);
-        }
+        FindClosestEnemy(enemies);
 
-        // attack only if enemy exists
-        if (distanceToEnemy <= circleRadius * circleRadius && enemy)
+        // attack enemy if it is inside the laser circle
+        if (enemyToAttack && Vector2.SqrMagnitude(transform.position - enemyToAttack.transform.position) <= circleRadius * circleRadius)
         {
             player.isAttacking = true;
-            float charge = player.GetChargeLevel();
-
-            AttackEnemy(damage * Time.deltaTime, charge);
+            AttackEnemy(damage, player.GetChargeLevel());
         }
         else
         {
@@ -64,11 +58,41 @@ public class Laser : MonoBehaviour
             // create a laser from player to enemy
             laserBeam.positionCount = 2;
             laserBeam.SetPosition(0, transform.position);
-            laserBeam.SetPosition(1, enemyPos);
+            laserBeam.SetPosition(1, enemyToAttack.transform.position);
 
-            enemy.GetDamage(damage);
+            enemyToAttack.GetDamage(damage * Time.deltaTime);
         }
         else laserBeam.positionCount = 0;
+    }
+
+    private void FindClosestEnemy(List<Enemy> activeEnemies)
+    {
+        float minDistanceToEnemySqr = Mathf.Infinity;
+
+        if (enemyToAttack) enemyToAttack.GetComponent<SpriteRenderer>().color = Color.red;
+
+        enemyToAttack = null;
+
+        for (int i = 0; i < activeEnemies.Count; i++)
+        {
+            if (activeEnemies[i])
+            {
+                distanceToEnemySqr = Vector2.SqrMagnitude(transform.position - activeEnemies[i].transform.position);
+
+                if (distanceToEnemySqr < minDistanceToEnemySqr)
+                {
+                    minDistanceToEnemySqr = distanceToEnemySqr;
+                    enemyToAttack = activeEnemies[i];
+                }
+            }
+        }
+
+        if (enemyToAttack) enemyToAttack.GetComponent<SpriteRenderer>().color = Color.green;
+    }
+
+    public void RemoveEnemy(Enemy enemyToRemove)
+    {
+        enemies.Remove(enemyToRemove);
     }
 
     public void UpdateRadius(float radius)

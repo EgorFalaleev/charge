@@ -14,8 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Player player;
 
     // state variables
-    private float health = 100;
-    [SerializeField] private Text healthText;
+    [SerializeField] private float health = 100;
 
     private void OnDrawGizmos()
     {
@@ -23,11 +22,6 @@ public class Enemy : MonoBehaviour
 
         Gizmos.color = (directionToPlayer.sqrMagnitude <= spotRadius * spotRadius) ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position, spotRadius);
-    }
-
-    private void Start()
-    {
-        healthText.text = "Enemy Health " + health;
     }
 
     private void Update()
@@ -42,9 +36,12 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        player.GetDamage(damageWhenDestroyed);
+        if (collision.gameObject.tag == "Player")
+        {
+            player.GetDamage(damageWhenDestroyed);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     private void FollowPlayer(Vector2 direction)
@@ -56,8 +53,12 @@ public class Enemy : MonoBehaviour
     {
         health -= damagePoints;
 
-        healthText.text = "Enemy Health " + health;
+        if (health <= 50) GetComponent<SpriteRenderer>().color = Color.yellow;
 
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0)
+        {
+            FindObjectOfType<Laser>().RemoveEnemy(this);
+            Destroy(gameObject);
+        }
     }
 }

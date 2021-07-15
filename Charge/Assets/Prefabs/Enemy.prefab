@@ -101,8 +101,8 @@ MonoBehaviour:
   spotRadius: 3.47
   enemySpeed: 3.51
   damageWhenDestroyed: 40
-  player: {fileID: 0}
-  healthText: {fileID: 0}
+  player: {fileID: 7399579231915426900, guid: fa84e7cb34249bb4b92f436c37c585f8, type: 3}
+  health: 100
 --- !u!61 &7237796898789621723
 BoxCollider2D:
   m_ObjectHideFlags: 0
