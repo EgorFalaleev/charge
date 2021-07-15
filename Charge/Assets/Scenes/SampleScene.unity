@@ -307,7 +307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: v0.5.2 Android
+  m_Text: v0.5.3 Android
 --- !u!222 &207023908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95270bcc2864ee42895a6c3548d961f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 1
+  smoothTime: 0
   cameraOffset: {x: 0, y: 0, z: -10}
   targetTf: {fileID: 1585937520}
 --- !u!20 &519420031
