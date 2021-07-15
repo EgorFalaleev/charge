@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 
     // references
     [SerializeField] private Player player;
+    public Gradient enemyGradient;
 
     // state variables
     [SerializeField] private float health = 100;
@@ -52,8 +53,6 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float damagePoints)
     {
         health -= damagePoints;
-
-        if (health <= 50) GetComponent<SpriteRenderer>().color = Color.yellow;
 
         if (health <= 0)
         {
