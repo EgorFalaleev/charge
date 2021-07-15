@@ -202,7 +202,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &26673954
 RectTransform:
@@ -1648,6 +1648,11 @@ PrefabInstance:
       objectReference: {fileID: 2122501618}
     - target: {fileID: 7399579230742358696, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579230742358696, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
       propertyPath: laserChargeCircle
       value: 
       objectReference: {fileID: 302790416}
@@ -1679,6 +1684,11 @@ PrefabInstance:
     - target: {fileID: 7399579231915426896, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579231915426896, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7399579231915426900, guid: fa84e7cb34249bb4b92f436c37c585f8,

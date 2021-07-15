@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Vector2 directionToPlayer = player.transform.position - transform.position;
-
+        Debug.Log(this + " " + directionToPlayer);
         if (directionToPlayer.sqrMagnitude <= spotRadius * spotRadius)
         {
             FollowPlayer(directionToPlayer);
@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
 
     private void FollowPlayer(Vector2 direction)
     {
+        Debug.Log(this + " Follow player");
         transform.Translate(direction.normalized * enemySpeed * Time.deltaTime);
     }
 
