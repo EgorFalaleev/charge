@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // configuration parameters
-    [SerializeField] private float chargeChangeSpeed = 0.01f;
+    [SerializeField] private float chargeChangeValue = 0.01f;
     [SerializeField] private float movementSpeed = 1f;
 
     // references
@@ -50,7 +50,8 @@ public class Player : MonoBehaviour
 
         Move();
         HandleLaserCircleVisibility(isPlayerMoving);
-        ChangeChargeLevel(isPlayerMoving, chargeChangeSpeed * Time.deltaTime);
+
+        ChangeChargeLevel(isPlayerMoving, CalculateChargeIncreaseSpeed(chargeChangeValue) * Time.deltaTime, chargeChangeValue * Time.deltaTime);
     }
 
     public float GetChargeLevel()
@@ -75,17 +76,17 @@ public class Player : MonoBehaviour
         playerLaserChargeCircle.SetActive(!isPlayerMoving);
     }
 
-    private void ChangeChargeLevel(bool isMoving, float chargeSpeed)
+    private void ChangeChargeLevel(bool isMoving, float chargeIncreaseSpeed, float chargeDecreaseSpeed)
     {
         if (isMoving)
         {
             isAttacking = false;
-            chargeLevel += chargeSpeed;
+            chargeLevel += chargeIncreaseSpeed;
             if (chargeLevel >= 1f) chargeLevel = 1f;
         }
         else if (isAttacking)
         {
-            chargeLevel -= chargeSpeed;
+            chargeLevel -= chargeDecreaseSpeed;
             if (chargeLevel <= 0f) chargeLevel = 0f;
         }
 
@@ -105,4 +106,20 @@ public class Player : MonoBehaviour
             transform.Translate(direction * movementSpeed * Time.deltaTime);
         }
     }
+
+    private float CalculateChargeIncreaseSpeed(float initialChargeSpeed)
+    {
+        float horizontal = Mathf.Abs(joystick.Horizontal);
+        float vertical = Mathf.Abs(joystick.Vertical);
+
+        // min charge speed
+        if (horizontal < 0.3f && vertical < 0.3f) return initialChargeSpeed / 10f;
+
+        // mid charge speed
+        else if (horizontal < 0.7f && vertical < 0.7f) return initialChargeSpeed / 3f;
+
+        // max charge speed
+        else return initialChargeSpeed;
+    }
+    
 }
