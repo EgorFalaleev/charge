@@ -307,7 +307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: v0.5.3 Android
+  m_Text: v0.5.4 Android
 --- !u!222 &207023908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2711,6 +2711,41 @@ PrefabInstance:
       propertyPath: enemies.Array.data[9]
       value: 
       objectReference: {fileID: 1277009289}
+    - target: {fileID: 7399579230742358703, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.8980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579230742358703, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579230742358703, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.23137257
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579230742358703, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.8980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579230742358703, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579230742358703, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.23137257
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399579230742358703, guid: fa84e7cb34249bb4b92f436c37c585f8,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7399579231915426896, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
       propertyPath: m_Name

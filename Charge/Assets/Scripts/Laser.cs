@@ -69,8 +69,6 @@ public class Laser : MonoBehaviour
     {
         float minDistanceToEnemySqr = Mathf.Infinity;
 
-        if (enemyToAttack) enemyToAttack.GetComponent<SpriteRenderer>().color = Color.red;
-
         enemyToAttack = null;
 
         for (int i = 0; i < activeEnemies.Count; i++)
@@ -86,8 +84,6 @@ public class Laser : MonoBehaviour
                 }
             }
         }
-
-        if (enemyToAttack) enemyToAttack.GetComponent<SpriteRenderer>().color = Color.green;
     }
 
     public void RemoveEnemy(Enemy enemyToRemove)

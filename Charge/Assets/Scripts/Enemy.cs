@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
 
     // references
     [SerializeField] private Player player;
+    [SerializeField] private Gradient enemyGradient;
+    private SpriteRenderer enemySprite;
 
     // state variables
     [SerializeField] private float health = 100;
@@ -22,6 +24,16 @@ public class Enemy : MonoBehaviour
 
         Gizmos.color = (directionToPlayer.sqrMagnitude <= spotRadius * spotRadius) ? Color.green : Color.red;
         Gizmos.DrawWireSphere(transform.position, spotRadius);
+    }
+
+    private void Awake()
+    {
+        enemySprite = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        CalculateColour(health);
     }
 
     private void Update()
@@ -44,6 +56,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void CalculateColour(float currentHealth)
+    {
+        float relativeHealth = (100 - currentHealth) / 100;
+        enemySprite.color = enemyGradient.Evaluate(relativeHealth);
+    }
+
     private void FollowPlayer(Vector2 direction)
     {
         transform.Translate(direction.normalized * enemySpeed * Time.deltaTime);
@@ -52,8 +70,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float damagePoints)
     {
         health -= damagePoints;
-
-        if (health <= 50) GetComponent<SpriteRenderer>().color = Color.yellow;
+        CalculateColour(health);
 
         if (health <= 0)
         {
