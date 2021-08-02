@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd561842792f894b856f836aa9c1bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotRadius: 3.02
-  enemySpeed: 3.51
+  spotRadius: 3.74
+  enemySpeed: 2.79
   damageWhenDestroyed: 40
   player: {fileID: 0}
   enemyGradient:
