@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         Move();
         HandleLaserCircleVisibility(isPlayerMoving);
 
-        ChangeChargeLevel(isPlayerMoving, CalculateChargeIncreaseSpeed(chargeChangeValue) * Time.deltaTime, chargeChangeValue * Time.deltaTime);
+        ChangeChargeLevel(isPlayerMoving, CalculateChargeIncreaseSpeed(chargeChangeValue) * Time.deltaTime, 2f * chargeChangeValue * Time.deltaTime);
     }
 
     public float GetChargeLevel()
