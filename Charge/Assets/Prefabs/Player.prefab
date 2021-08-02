@@ -100,15 +100,6 @@ MonoBehaviour:
   circleRadius: 4
   enemies:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   player: {fileID: 7399579231915426900}
   enemyToAttack: {fileID: 0}
   laserChargeCircle: {fileID: 0}
@@ -222,7 +213,7 @@ GameObject:
   - component: {fileID: 7399579231915426902}
   - component: {fileID: 7399579231915426900}
   - component: {fileID: 6419452753931830213}
-  - component: {fileID: 199566780}
+  - component: {fileID: 172243527}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -313,7 +304,6 @@ MonoBehaviour:
   movementSpeed: 4
   joystick: {fileID: 0}
   laserCircle: {fileID: 7399579230742358708}
-  chargeLevelSlider: {fileID: 0}
   playerHPText: {fileID: 0}
   playerChargeCircle: {fileID: 0}
   playerLaserChargeCircle: {fileID: 0}
@@ -335,7 +325,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!50 &199566780
+--- !u!50 &172243527
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

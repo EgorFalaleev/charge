@@ -118,5 +118,4 @@ public class Player : MonoBehaviour
         // max charge speed
         else return initialChargeSpeed;
     }
-    
 }
