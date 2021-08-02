@@ -5310,6 +5310,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6053149370447123235, guid: 489e0289f68b1024797f7277c7188198,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2144851955}
     - target: {fileID: 6053149370575965207, guid: 489e0289f68b1024797f7277c7188198,
         type: 3}
       propertyPath: m_Name
@@ -5467,3 +5472,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2144851955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6095554939745094163, guid: 134510041f935fa459bcf229b329fe62,
+    type: 3}
+  m_PrefabInstance: {fileID: 701576433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f40528c24c633448aefeece4f7ab1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
