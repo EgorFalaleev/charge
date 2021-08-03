@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Image playerLaserChargeCircle;
     private Camera mainCamera;
     private Image playerChargeImage;
-    private Image playerLaserChargeImage;
     private SceneLoader sceneLoader;
 
     // state variables
@@ -30,7 +29,6 @@ public class Player : MonoBehaviour
         mainCamera = Camera.main;
         sceneLoader = FindObjectOfType<SceneLoader>();
         playerChargeImage = playerChargeCircle.GetComponent<Image>();
-        playerLaserChargeImage = playerLaserChargeCircle.GetComponent<Image>();
     }
 
     private void Start()
@@ -94,7 +92,7 @@ public class Player : MonoBehaviour
         }
 
         playerChargeImage.fillAmount = chargeLevel;
-        playerLaserChargeImage.fillAmount = chargeLevel;
+        playerLaserChargeCircle.fillAmount = chargeLevel;
     }
 
     private void Move()
