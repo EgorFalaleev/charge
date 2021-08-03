@@ -67,6 +67,13 @@ public class Laser : MonoBehaviour
 
     private void FindClosestEnemy(List<Enemy> activeEnemies)
     {
+        if (activeEnemies.Count == 0)
+        {
+            FindObjectOfType<SceneLoader>().LoadNextLevel();
+
+            return;
+        }
+
         float minDistanceToEnemySqr = Mathf.Infinity;
 
         enemyToAttack = null;
@@ -82,6 +89,10 @@ public class Laser : MonoBehaviour
                     minDistanceToEnemySqr = distanceToEnemySqr;
                     enemyToAttack = activeEnemies[i];
                 }
+            }
+            else
+            {
+                activeEnemies.RemoveAt(i);
             }
         }
     }

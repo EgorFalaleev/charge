@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     // references
     [SerializeField] private DynamicJoystick joystick;
     [SerializeField] private GameObject laserCircle;
-    [SerializeField] private Slider chargeLevelSlider;
     [SerializeField] private Text playerHPText;
     [SerializeField] private GameObject playerChargeCircle;
     [SerializeField] private GameObject playerLaserChargeCircle;
@@ -36,7 +35,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        chargeLevelSlider.value = chargeLevel;
         playerChargeImage.fillAmount = chargeLevel;
 
         playerHPText.text = "Player HP: " + health;
@@ -51,7 +49,7 @@ public class Player : MonoBehaviour
         Move();
         HandleLaserCircleVisibility(isPlayerMoving);
 
-        ChangeChargeLevel(isPlayerMoving, CalculateChargeIncreaseSpeed(chargeChangeValue) * Time.deltaTime, chargeChangeValue * Time.deltaTime);
+        ChangeChargeLevel(isPlayerMoving, CalculateChargeIncreaseSpeed(chargeChangeValue) * Time.deltaTime, 2f * chargeChangeValue * Time.deltaTime);
     }
 
     public float GetChargeLevel()
@@ -90,7 +88,6 @@ public class Player : MonoBehaviour
             if (chargeLevel <= 0f) chargeLevel = 0f;
         }
 
-        chargeLevelSlider.value = chargeLevel;
         playerChargeImage.fillAmount = chargeLevel;
         playerLaserChargeImage.fillAmount = chargeLevel;
     }
@@ -121,5 +118,4 @@ public class Player : MonoBehaviour
         // max charge speed
         else return initialChargeSpeed;
     }
-    
 }
