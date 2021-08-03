@@ -57,6 +57,11 @@ public class Player : MonoBehaviour
         return chargeLevel;
     }
 
+    public bool GetMovementState()
+    {
+        return isPlayerMoving;
+    }
+
     public void GetDamage(float damage)
     {
         health -= damage;
