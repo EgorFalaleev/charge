@@ -24,6 +24,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Level Selection Screen");
     }
 
+    public void LoadLevelWithIndex(int levelIndex)
+    {
+        SceneManager.LoadScene(levelIndex);
+    }    
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(currentSceneIndex);
