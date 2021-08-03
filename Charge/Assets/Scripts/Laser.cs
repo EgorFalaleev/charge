@@ -38,17 +38,21 @@ public class Laser : MonoBehaviour
     {
         FindClosestEnemy(enemies);
 
-        // attack enemy if it is inside the laser circle
-        if (enemyToAttack && Vector2.SqrMagnitude(transform.position - enemyToAttack.transform.position) <= circleRadius * circleRadius)
+        if (!player.GetMovementState())
         {
-            player.isAttacking = true;
-            AttackEnemy(damage, player.GetChargeLevel());
+            // attack enemy if it is inside the laser circle
+            if (enemyToAttack && Vector2.SqrMagnitude(transform.position - enemyToAttack.transform.position) <= circleRadius * circleRadius)
+            {
+                player.isAttacking = true;
+                AttackEnemy(damage, player.GetChargeLevel());
+            }
+            else
+            {
+                player.isAttacking = false;
+                laserBeam.positionCount = 0;
+            }
         }
-        else
-        {
-            player.isAttacking = false;
-            laserBeam.positionCount = 0;
-        }
+        else laserBeam.positionCount = 0;
     }
 
     private void AttackEnemy(float damage, float chargeLevel)

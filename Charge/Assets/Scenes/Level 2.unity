@@ -4742,18 +4742,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd561842792f894b856f836aa9c1bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &637614034 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7866065660945962480, guid: 0734e335992d79b479812a8ec61542b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1647817538}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &637614035 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7866065660945962479, guid: 0734e335992d79b479812a8ec61542b8,
     type: 3}
   m_PrefabInstance: {fileID: 1647817538}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &637614036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7866065660945962478, guid: 0734e335992d79b479812a8ec61542b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1647817538}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &701576433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6528,6 +6534,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7866065660919100271, guid: 0734e335992d79b479812a8ec61542b8,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866065660919100271, guid: 0734e335992d79b479812a8ec61542b8,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866065660919100271, guid: 0734e335992d79b479812a8ec61542b8,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1600
+      objectReference: {fileID: 0}
     - target: {fileID: 7866065660919100273, guid: 0734e335992d79b479812a8ec61542b8,
         type: 3}
       propertyPath: m_Name
@@ -6547,11 +6568,6 @@ PrefabInstance:
       propertyPath: laserChargeCircle
       value: 
       objectReference: {fileID: 637614035}
-    - target: {fileID: 7399579230742358696, guid: fa84e7cb34249bb4b92f436c37c585f8,
-        type: 3}
-      propertyPath: enemies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7399579230742358696, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
       propertyPath: enemies.Array.data[0]
@@ -6577,11 +6593,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7399579231915426896, guid: fa84e7cb34249bb4b92f436c37c585f8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7399579231915426900, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
       propertyPath: joystick
@@ -6601,7 +6612,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLaserChargeCircle
       value: 
-      objectReference: {fileID: 637614034}
+      objectReference: {fileID: 637614036}
     - target: {fileID: 7399579231915426901, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
       propertyPath: m_RootOrder
@@ -6755,6 +6766,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Interactable UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053149370575965225, guid: 489e0289f68b1024797f7277c7188198,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053149370575965225, guid: 489e0289f68b1024797f7277c7188198,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053149370575965225, guid: 489e0289f68b1024797f7277c7188198,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1600
       objectReference: {fileID: 0}
     - target: {fileID: 6053149370575965227, guid: 489e0289f68b1024797f7277c7188198,
         type: 3}
