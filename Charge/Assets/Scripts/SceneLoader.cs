@@ -5,18 +5,21 @@ public class SceneLoader : MonoBehaviour
 {
     // state variables
     private int currentSceneIndex;
-    private int totalScenes;
 
     private void Start()
     {
-        totalScenes = SceneManager.sceneCountInBuildSettings;
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void LoadNextLevel()
     {
-        if (currentSceneIndex + 1 == totalScenes) SceneManager.LoadScene(0);
+        if (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings) LoadMainMenu();
         else SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void LoadLevelSelectionScreen()
