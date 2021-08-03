@@ -3810,12 +3810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd561842792f894b856f836aa9c1bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &637614034 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7866065660945962480, guid: 0734e335992d79b479812a8ec61542b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1647817538}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &637614035 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7866065660945962479, guid: 0734e335992d79b479812a8ec61542b8,
@@ -5114,6 +5108,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0734e335992d79b479812a8ec61542b8, type: 3}
+--- !u!114 &1647817539 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7866065660945962478, guid: 0734e335992d79b479812a8ec61542b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1647817538}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1717325918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5165,7 +5171,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerLaserChargeCircle
       value: 
-      objectReference: {fileID: 637614034}
+      objectReference: {fileID: 1647817539}
     - target: {fileID: 7399579231915426901, guid: fa84e7cb34249bb4b92f436c37c585f8,
         type: 3}
       propertyPath: m_RootOrder

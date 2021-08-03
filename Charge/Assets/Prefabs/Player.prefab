@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   player: {fileID: 7399579231915426900}
   enemyToAttack: {fileID: 0}
   laserChargeCircle: {fileID: 0}
@@ -305,7 +306,7 @@ MonoBehaviour:
   chargeChangeValue: 0.1
   movementSpeed: 4
   joystick: {fileID: 0}
-  laserCircle: {fileID: 7399579230742358708}
+  laserCircle: {fileID: 7399579230742358698}
   playerHPText: {fileID: 0}
   playerChargeCircle: {fileID: 0}
   playerLaserChargeCircle: {fileID: 0}

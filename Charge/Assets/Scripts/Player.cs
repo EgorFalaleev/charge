@@ -9,10 +9,10 @@ public class Player : MonoBehaviour
 
     // references
     [SerializeField] private DynamicJoystick joystick;
-    [SerializeField] private GameObject laserCircle;
+    [SerializeField] private SpriteRenderer laserCircle;
     [SerializeField] private Text playerHPText;
     [SerializeField] private GameObject playerChargeCircle;
-    [SerializeField] private GameObject playerLaserChargeCircle;
+    [SerializeField] private Image playerLaserChargeCircle;
     private Camera mainCamera;
     private Image playerChargeImage;
     private Image playerLaserChargeImage;
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         playerLaserChargeCircle.transform.position = mainCamera.WorldToScreenPoint(transform.position);
 
         Move();
-        HandleLaserCircleVisibility(isPlayerMoving);
+        HandleLaserCircleTransparency(isPlayerMoving);
 
         ChangeChargeLevel(isPlayerMoving, CalculateChargeIncreaseSpeed(chargeChangeValue) * Time.deltaTime, 2f * chargeChangeValue * Time.deltaTime);
     }
@@ -67,11 +67,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleLaserCircleVisibility(bool isPlayerMoving)
+    private void HandleLaserCircleTransparency(bool isPlayerMoving)
     {
-        // laser circle enables when player is not moving
-        laserCircle.SetActive(!isPlayerMoving);
-        playerLaserChargeCircle.SetActive(!isPlayerMoving);
+        // laser circle is semi-transparent when player is moving
+        laserCircle.color = isPlayerMoving ? new Color(1, 1, 1, 0.3f) : new Color(1, 1, 1, 1);
+        playerLaserChargeCircle.color = isPlayerMoving ? new Color(0.2313726f, 0.6941177f, 0.8980393f, 0.3f) : new Color(0.2313726f, 0.6941177f, 0.8980393f, 1);
     }
 
     private void ChangeChargeLevel(bool isMoving, float chargeIncreaseSpeed, float chargeDecreaseSpeed)
