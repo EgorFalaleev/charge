@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spotRadius: 3.74
-  enemySpeed: 2.79
   damageWhenDestroyed: 40
   player: {fileID: 0}
   enemyGradient:
@@ -214,7 +213,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 3
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
