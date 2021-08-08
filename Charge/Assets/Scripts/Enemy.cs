@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour
     [Range(1f, 7f)]
     [SerializeField] private float spotRadius = 3f;
     [Range(0f, 10f)]
-    [SerializeField] private float enemySpeed = 3f;
     [SerializeField] private float damageWhenDestroyed = 40f;
 
     // references
     [SerializeField] private Player player;
     [SerializeField] private Gradient enemyGradient;
     private SpriteRenderer enemySprite;
+    private AIPath aIPath;
 
     // state variables
     [SerializeField] private float health = 100;
@@ -29,11 +29,13 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         enemySprite = GetComponent<SpriteRenderer>();
+        aIPath = GetComponent<AIPath>();
     }
 
     private void Start()
     {
         CalculateColour(health);
+        aIPath.enabled = false;
     }
 
     private void Update()
@@ -42,8 +44,9 @@ public class Enemy : MonoBehaviour
 
         if (directionToPlayer.sqrMagnitude <= spotRadius * spotRadius)
         {
-            FollowPlayer(directionToPlayer);
+            aIPath.enabled = true;
         }
+        else aIPath.enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -60,11 +63,6 @@ public class Enemy : MonoBehaviour
     {
         float relativeHealth = (100 - currentHealth) / 100;
         enemySprite.color = enemyGradient.Evaluate(relativeHealth);
-    }
-
-    private void FollowPlayer(Vector2 direction)
-    {
-        transform.Translate(direction.normalized * enemySpeed * Time.deltaTime);
     }
 
     public void GetDamage(float damagePoints)
