@@ -187,6 +187,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4191076417774516430}
     m_Modifications:
+    - target: {fileID: 624240687488646968, guid: 66a00a0ae12205c47824dfc3a3934494,
+        type: 3}
+      propertyPath: m_Text
+      value: v0.7.1 Android
+      objectReference: {fileID: 0}
     - target: {fileID: 3361881277295154079, guid: 66a00a0ae12205c47824dfc3a3934494,
         type: 3}
       propertyPath: m_Pivot.x
